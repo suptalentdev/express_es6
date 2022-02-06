@@ -2,11 +2,11 @@
 import mongoose from 'mongoose'
 const Schema = mongoose.Schema;
 
-const snippetSchema = new Schema({
-	title: String,
-	body: String,
+const userSchema = new Schema({
+	name: String,
+	password: String
 });
 
-const Snippet = mongoose.model('Snippet', snippetSchema);
+const User = mongoose.model('User', userSchema);
 
-export default Snippet
+export default User
