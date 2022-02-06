@@ -8,10 +8,21 @@ const port = process.env.PORT || 3000
 import logger from 'morgan'
 app.use(logger('dev'));
 
-app.use(express.static('public'));
 
+import path from 'path'
+import { fileURLToPath } from 'url'
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+// normalizes path to the views folder
+app.set('views', path.join(__dirname, '..', 'views'))
 app.set('view engine', 'hbs')
+// register public folder
+app.use(express.static(path.join(__dirname, '..', 'public')))
 
+
+import cookieParser from 'cookie-parser'
+app.use(express.urlencoded({ extended: false }))
+app.use(cookieParser())
 
 import routes from './routes/index.js'
 app.use('/', routes)
