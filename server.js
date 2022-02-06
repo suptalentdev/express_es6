@@ -3,6 +3,8 @@ import './db/index.js'
 
 const app = express()
 
+const port = process.env.PORT || 3000
+
 import logger from 'morgan'
 app.use(logger('dev'));
 
@@ -22,4 +24,4 @@ import errorHandler from './error-handling/index.js'
 errorHandler(app)
 
 
-app.listen(3000, () => console.log('server listening'))
+app.listen(port, () => console.log(`Server listening on port ${port}`))
