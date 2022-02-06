@@ -1,7 +1,5 @@
-// import { logErrors, clientErrorHandler, errorHandler } from './error-handling/index.js'
 import express from 'express'
 import './db/index.js'
-
 
 const app = express()
 
@@ -11,18 +9,13 @@ app.use(logger('dev'));
 app.use(express.static('public'));
 
 app.set('view engine', 'hbs')
-// app.use((req, res) => res.render('404'))
 
 
-// routes
 import routes from './routes/index.js'
-
 app.use('/', routes)
 
-// custom error handlers
-// app.use(logErrors)
-// app.use(clientErrorHandler)
-// app.use(errorHandler)
+app.use((req, res) => res.render('404'))
+
 
 // error handling
 import errorHandler from './error-handling/index.js'
